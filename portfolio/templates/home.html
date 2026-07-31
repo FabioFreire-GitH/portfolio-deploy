@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home | Meu Portfólio {% endblock %}
+
+{% block content %}
+<div class="intro-section">
+    <div class="intro-text">
+        <h1>Olá! Meu nome é <span class="highlight">Fábio Freire</span></h1>
+        <p class="intro-p">Sou desenvolvedor em transição de carreira, focado em criar aplicações eficientes e funcionais
+            com Python e Django. Seja bem-vindo ao meu portfólio pessoal!</p>
+    </div>
+    <div class="intro-avatar">
+        <img src="{% static 'portfolio/images/profile.jpg' %}" alt="Foto de Perfil de Fábio Freire" class="profile-img">
+    </div>
+</div>
+
+<section class="skills-section">
+    <h2>Minhas Habilidades</h2>
+    <div class="skills-grid">
+        {% for habilidade in habilidades %}
+        <span class="skill-badge">{{ habilidade.nome }}</span>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="contacts-section">
+    <h2>Contato</h2>
+    <p>Fique à vontade para entrar em contato ou conhecer mais do meu trabalho:</p>
+    <ul class="contacts-list">
+        <li>
+            <strong>E-mail:</strong>
+            <a href="mailto:freirefabio.ff@gmail.com">freirefabio.ff@gmail.com</a>
+        </li>
+        <li>
+            <strong>LinkedIn:</strong>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">Conectar no LinkedIn</a>
+        </li>
+        <li>
+            <strong>GitHub:</strong>
+            <a href="https://github.com/FabioFreire-GitH" target="_blank" rel="noopener noreferrer">Seguir no GitHub</a>
+        </li>
+    </ul>
+</section>
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{message}}
+    </div>
+    {% endfor %}
+{% endif %}
+
+<section class="contact-form-section">
+    <h2>Envie uma Mensagem</h2>
+    <form method="post" class="contact-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Enviar</button>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ projeto.titulo }} | Meu Portfólio {% endblock %}
+
+{% block content %}
+    <div class="project-details-container">
+        <h1>{{ projeto.titulo }}</h1>
+        
+        <div class="project-info">
+            <h3 class="project-section-title">Sobre o Projeto</h3>
+            <p class="project-desc">{{ projeto.descricao }}</p>
+
+            <h3 class="project-section-title">Tecnologias Utilizadas</h3>
+            <p class="project-desc">{{ projeto.tecnologia }}</p>
+
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                {% if projeto.github and projeto.github != "None" and projeto.github != "" %}
+                <a href="{{ projeto.github }}" target="_blank" rel="noopener noreferrer" class="btn">
+                    Ver no GitHub
+                </a>
+                {% endif %}
+                <a href="{% url 'lista_projetos' %}" class="btn btn-secondary" style="margin-top: 0;">
+                    Voltar para Projetos
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

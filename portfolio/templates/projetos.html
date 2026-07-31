@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Projetos | Meu Portfólio {% endblock %}
+
+{% block content %}
+    <section>
+        <h1>Meus Projetos</h1>
+        <p>Projetos e estudos práticos que desenvolvi ao longo do meu aprendizado:</p>
+        
+        <div class="projects-grid">
+            {% for projeto in projetos %}
+                <a href="{% url 'detalhes_projeto' id_projeto=projeto.id %}" class="project-card">
+                    <div>
+                        <h3>{{ projeto.titulo }}</h3>
+                        <p>{{ projeto.descricao }}</p>
+                    </div>
+                    <div class="project-card-footer">
+                        <span class="tech-tag">{{ projeto.tecnologia }}</span>
+                        <span class="view-details">Ver detalhes &rarr;</span>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>    
+{% endblock %}
