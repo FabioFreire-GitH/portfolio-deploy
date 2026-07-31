@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-0^h-sx-(cke1p27b9lh_c%&zbe0ah-vk7&zphsx(=t4$cg7of%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'fabiofreireportfolio.pythonanywhere.com',
+    'localhost',
+    '127.0.0.1'
+]
 
 
 # Application definition
@@ -118,6 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = "/home/fabiofreireportfolio/portifolio-deploy/static"
 
 # Envio de email
 DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
